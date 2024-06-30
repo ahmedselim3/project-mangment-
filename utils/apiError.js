@@ -1,0 +1,13 @@
+var status = require('statuses')
+
+// @desc This class is responsible about operation error (Errors that i can predict)
+class ApiError extends Error{
+    constructor(message , statusCode){
+        super(message)
+        this.statusCode=statusCode
+        this.status = `${statusCode}`.startsWith(4) ? `fail` : `Error`
+        this.isOperational = true;
+    }
+}
+
+module.exports = ApiError
